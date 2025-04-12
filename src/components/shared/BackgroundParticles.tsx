@@ -28,7 +28,7 @@ const BackgroundParticles = () => {
       
       // Create particle element
       const element = document.createElement("div");
-      element.className = "absolute rounded-full opacity-60";
+      element.className = "absolute rounded-full opacity-80";
       element.style.backgroundColor = "#B8001F"; // Specified color
       element.style.left = `${x}%`;
       element.style.top = `${y}px`;
@@ -80,10 +80,10 @@ const BackgroundParticles = () => {
         @keyframes fall {
           0% {
             transform: translateY(0) translateX(0);
-            opacity: 0.6;
+            opacity: 0.8;
           }
           100% {
-            transform: translateY(100vh) translateX(57vh);
+            transform: translateY(100vh) translateX(90vh);
             opacity: 0;
           }
         }
