@@ -68,12 +68,12 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
             >
               <motion.a
                 href="mailto:shreyasmakwana.smh@gmail.com"
-                className="transform transition-transform duration-300 hover:scale-105 bg-primary text-background px-8 py-4 text-lg rounded-lg shadow-lg flex items-center space-x-3"
+                className="transform transition-transform duration-300 hover:scale-105 bg-primary text-background px-7 py-3.5 text-base rounded-lg shadow-lg flex items-center space-x-2.5"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Mail className="h-6 w-6" />
+                <Mail className="h-[22px] w-[22px]" />
                 <span>Email Me</span>
               </motion.a>
               
@@ -81,12 +81,12 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 href={resumePdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transform transition-transform duration-300 hover:scale-105 border-2 border-primary text-primary px-8 py-4 text-lg rounded-lg shadow-lg flex items-center space-x-3"
+                className="transform transition-transform duration-300 hover:scale-105 border-2 border-primary text-primary px-7 py-3.5 text-base rounded-lg shadow-lg flex items-center space-x-2.5"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <FileText className="h-6 w-6" />
+                <FileText className="h-[22px] w-[22px]" />
                 <span>Resume</span>
               </motion.a>
               
@@ -94,12 +94,12 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 href="https://www.linkedin.com/in/shreyas-makwana-472a4a258/"
                 target="_blank" 
                 rel="noopener"
-                className="transform transition-transform duration-300 hover:scale-105 bg-[#0077B5] text-background px-8 py-4 text-lg rounded-lg shadow-lg flex items-center space-x-3"
+                className="transform transition-transform duration-300 hover:scale-105 bg-[#0077B5] text-background px-7 py-3.5 text-base rounded-lg shadow-lg flex items-center space-x-2.5"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-[22px] w-[22px]" />
                 <span>LinkedIn</span>
               </motion.a>
             </motion.div>
