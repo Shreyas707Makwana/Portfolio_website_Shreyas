@@ -1,6 +1,6 @@
 import { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Code, Monitor, Drill } from "lucide-react";
+import { Code, Monitor, Drill, Database } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import ProgressBar from "./shared/ProgressBar";
 
@@ -22,6 +22,11 @@ const tools = [
   { name: "Git", percentage: 90 },
   { name: "Docker", percentage: 80 },
   { name: "AWS", percentage: 70 },
+];
+
+const databases = [
+  { name: "MongoDB", percentage: 90 },
+  { name: "MySQL", percentage: 80 },
 ];
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
@@ -62,11 +67,11 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          Skills & Tech_Stack
+          My Stack
         </motion.h2>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
           variants={container}
           initial="hidden"
           animate={isVisible ? "show" : "hidden"}
@@ -138,6 +143,30 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
                     <span className="font-medium">{tool.name}</span>
                   </div>
                   <ProgressBar percentage={tool.percentage} isVisible={isVisible} delay={index * 0.1 + 0.4} />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          
+          {/* Databases */}
+          <motion.div 
+            variants={item}
+            className="bg-white p-6 rounded-xl shadow-lg border border-primary/10"
+          >
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-primary/5 rounded-full flex items-center justify-center">
+                <Database className="h-5 w-5 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold">Databases</h3>
+            </div>
+            
+            <div className="space-y-4">
+              {databases.map((db, index) => (
+                <div key={index}>
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="font-medium">{db.name}</span>
+                  </div>
+                  <ProgressBar percentage={db.percentage} isVisible={isVisible} delay={index * 0.1 + 0.6} />
                 </div>
               ))}
             </div>

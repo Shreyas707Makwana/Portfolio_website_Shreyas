@@ -56,14 +56,14 @@ const Header = ({ onNavigate }: HeaderProps) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-primary text-3xl">&lt;/&gt;</span>
+          <span className="text-primary text-4xl">&lt;/&gt;</span>
           <motion.span
             key={rotatingTextIndex}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="text-accent ml-1"
+            className="text-accent ml-1 text-2xl"
           >
             {skills[rotatingTextIndex]}
           </motion.span>
@@ -80,7 +80,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
             <motion.button
               key={item.label}
               onClick={() => item.onClick()}
-              className="text-lg text-primary hover:text-accent transition-colors"
+              className="text-xl text-primary hover:text-accent transition-colors"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 * index }}
