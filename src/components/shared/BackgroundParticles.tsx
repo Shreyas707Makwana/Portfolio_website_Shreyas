@@ -28,7 +28,8 @@ const BackgroundParticles = () => {
       
       // Create particle element
       const element = document.createElement("div");
-      element.className = "absolute rounded-full bg-accent opacity-60";
+      element.className = "absolute rounded-full opacity-60";
+      element.style.backgroundColor = "#AF2655"; // Set the specific color
       element.style.left = `${x}%`;
       element.style.top = `${y}px`;
       element.style.width = `${size}px`;

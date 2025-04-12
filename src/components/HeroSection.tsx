@@ -11,8 +11,8 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
   return (
     <section className="section flex items-center justify-center relative overflow-hidden min-h-screen">
       <div className="container mx-auto px-4 pt-16 z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-3/5 mb-10 md:mb-0">
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <div className="md:w-3/5 mb-10 md:mb-0 text-center md:text-left md:pl-10">
             <motion.div 
               className="mb-6"
               initial={{ opacity: 0 }}
@@ -20,7 +20,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.h1 
-                className="text-4xl md:text-6xl font-bold mb-2"
+                className="text-5xl md:text-7xl font-bold mb-2"
                 initial={{ opacity: 0, rotateX: -90 }}
                 animate={{ opacity: 1, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -40,7 +40,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               </motion.h1>
               
               <motion.h2 
-                className="text-3xl md:text-5xl font-bold mb-6"
+                className="text-4xl md:text-6xl font-bold mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -49,7 +49,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               </motion.h2>
               
               <motion.div 
-                className="max-w-lg"
+                className="max-w-lg mx-auto md:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.0 }}
@@ -61,7 +61,7 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
             </motion.div>
             
             <motion.div 
-              className="flex flex-wrap gap-4 mt-8"
+              className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
