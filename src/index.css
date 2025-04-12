@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 39 100% 97%;  /* #FFFAF1 */
+    --foreground: 27 30% 7%;    /* #1A120B */
+    --accent: 340 70% 43%;      /* #b72055 */
+    
+    --card: 39 100% 100%;       /* white */
+    --card-foreground: 27 30% 7%;
+    
+    --border: 27 30% 7% / 0.1;
+    
+    --primary: 27 30% 7%;       /* #1A120B */
+    --primary-foreground: 39 100% 97%;
+    
+    --secondary: 27 30% 7% / 0.05;
+    --secondary-foreground: 27 30% 7%;
+    
+    --muted: 27 30% 7% / 0.05;
+    --muted-foreground: 27 30% 7% / 0.6;
+    
+    --accent: 340 70% 43%;      /* #b72055 */
+    --accent-foreground: 39 100% 97%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 39 100% 97%;
+    
+    --ring: 340 70% 43%;
+    
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .section {
+    @apply min-h-screen py-20 px-4 relative;
+  }
+  
+  .glass {
+    @apply bg-background/70 backdrop-blur-md border-b border-white/10;
+  }
+  
+  .fadeInUp {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .fadeInUp.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
