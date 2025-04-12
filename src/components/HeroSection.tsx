@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onContactClick }: HeroSectionProps) => {
   const typedText = useTypewriter(
-    "Passionate developer creating beautiful digital experiences", 
+    "Creating beautiful user experiences.", 
     { delay: 80 }
   );
   
@@ -55,15 +55,9 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               </motion.h2>
               
               <div className="max-w-lg">
-                <div 
-                  className="relative" 
-                  style={{ 
-                    wordBreak: "normal", 
-                    wordWrap: "break-word"
-                  }}
-                >
+                <div className="relative">
                   <p className="text-xl md:text-2xl text-primary/80 whitespace-normal overflow-visible border-r-4 border-primary/80 pr-2 animate-pulse">
-                    {typedText || "Passionate developer creating beautiful digital experiences"}
+                    {typedText || "Creating beautiful user experiences."}
                   </p>
                 </div>
               </div>
