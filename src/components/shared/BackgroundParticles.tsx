@@ -23,7 +23,7 @@ const BackgroundParticles = () => {
       // Generate random values for particle
       const x = Math.random() * 100; // Random position from 0 to 100%
       const y = -10; // Start slightly above the viewport
-      const size = Math.random() * 3 + 3; // Random size between 3-6px
+      const size = Math.random() * 4 + 3; // Random size between 3-7px
       const duration = Math.random() * 4 + 8; // Random duration between 8-12s
       
       // Create particle element
@@ -34,7 +34,7 @@ const BackgroundParticles = () => {
       element.style.top = `${y}px`;
       element.style.width = `${size}px`;
       element.style.height = `${size}px`;
-      element.style.animation = `fall ${duration}s linear forwards`;
+      element.style.animation = `particleDrift ${duration}s linear forwards`;
       
       container.appendChild(element);
       
@@ -77,13 +77,13 @@ const BackgroundParticles = () => {
       className="particles fixed inset-0 z-0 overflow-hidden pointer-events-none"
     >
       <style jsx>{`
-        @keyframes fall {
-          0% {
-            transform: translateY(0) translateX(0);
+        @keyframes particleDrift {
+          from {
+            transform: translateY(-10vh) translateX(-10vw);
             opacity: 0.8;
           }
-          100% {
-            transform: translateY(100vh) translateX(90vh);
+          to {
+            transform: translateY(110vh) translateX(10vw);
             opacity: 0;
           }
         }
