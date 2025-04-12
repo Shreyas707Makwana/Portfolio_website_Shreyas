@@ -55,9 +55,17 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
               </motion.h2>
               
               <div className="max-w-lg">
-                <p className="text-xl md:text-2xl text-primary/80 border-r-4 border-primary/80 pr-2 animate-pulse">
-                  {typedText}
-                </p>
+                <div 
+                  className="relative" 
+                  style={{ 
+                    wordBreak: "normal", 
+                    wordWrap: "break-word"
+                  }}
+                >
+                  <p className="text-xl md:text-2xl text-primary/80 whitespace-normal overflow-visible border-r-4 border-primary/80 pr-2 animate-pulse">
+                    {typedText || "Passionate developer creating beautiful digital experiences"}
+                  </p>
+                </div>
               </div>
             </motion.div>
             
