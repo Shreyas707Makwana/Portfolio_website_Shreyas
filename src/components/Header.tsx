@@ -63,7 +63,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="text-accent ml-1 text-2xl"
+            className="text-accent ml-1 text-3xl"
           >
             {skills[rotatingTextIndex]}
           </motion.span>

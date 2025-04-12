@@ -21,20 +21,20 @@ const BackgroundParticles = () => {
     
     const createParticle = () => {
       // Generate random values for particle
-      const x = Math.random() * 100; // Random position from 0 to 100%
-      const y = -10; // Start slightly above the viewport
+      const x = Math.random() * 20; // Start from the left side (0-20%)
+      const y = Math.random() * 30; // Start from the top (0-30%)
       const size = Math.random() * 3 + 3; // Random size between 3-6px
       const duration = Math.random() * 4 + 8; // Random duration between 8-12s
       
       // Create particle element
       const element = document.createElement("div");
       element.className = "absolute rounded-full opacity-60";
-      element.style.backgroundColor = "#B8001F"; // Updated color
+      element.style.backgroundColor = "#7D0A0A"; // Darker maroon color
       element.style.left = `${x}%`;
-      element.style.top = `${y}px`;
+      element.style.top = `${y}%`;
       element.style.width = `${size}px`;
       element.style.height = `${size}px`;
-      element.style.animation = `fall ${duration}s linear forwards`;
+      element.style.animation = `fallDiagonal ${duration}s linear forwards`;
       
       container.appendChild(element);
       
@@ -77,13 +77,13 @@ const BackgroundParticles = () => {
       className="particles fixed inset-0 z-0 overflow-hidden pointer-events-none"
     >
       <style jsx>{`
-        @keyframes fall {
+        @keyframes fallDiagonal {
           0% {
             transform: translateY(0) translateX(0);
             opacity: 0.6;
           }
           100% {
-            transform: translateY(100vh) translateX(20px);
+            transform: translateY(100vh) translateX(100vw);
             opacity: 0;
           }
         }
