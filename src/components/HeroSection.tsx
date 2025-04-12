@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, FileText, Linkedin } from "lucide-react";
-import useTypewriter from "../hooks/useTypewriter";
 import resumePdf from "../assets/Resume_Shreyas.pdf";
 
 interface HeroSectionProps {
@@ -9,11 +8,6 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ onContactClick }: HeroSectionProps) => {
-  const typedText = useTypewriter(
-    "Creating beautiful user experiences.", 
-    { delay: 80 }
-  );
-  
   return (
     <section className="section flex items-center justify-center relative overflow-hidden min-h-screen">
       <div className="container mx-auto px-4 pt-16 z-10">
@@ -54,13 +48,16 @@ const HeroSection = ({ onContactClick }: HeroSectionProps) => {
                 <span className="inline-block">I'm Shreyas</span>
               </motion.h2>
               
-              <div className="max-w-lg">
-                <div className="relative">
-                  <p className="text-xl md:text-2xl text-primary/80 whitespace-normal overflow-visible border-r-4 border-primary/80 pr-2 animate-pulse">
-                    {typedText || "Creating beautiful user experiences."}
-                  </p>
-                </div>
-              </div>
+              <motion.div 
+                className="max-w-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <p className="text-xl md:text-2xl text-primary/80">
+                  Creating beautiful user experiences.
+                </p>
+              </motion.div>
             </motion.div>
             
             <motion.div 
