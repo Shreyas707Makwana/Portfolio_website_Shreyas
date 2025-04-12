@@ -83,7 +83,7 @@ const BackgroundParticles = () => {
             opacity: 0.6;
           }
           100% {
-            transform: translateY(100vh) translateX(20px);
+            transform: translateY(100vh) translateX(57vh);
             opacity: 0;
           }
         }
