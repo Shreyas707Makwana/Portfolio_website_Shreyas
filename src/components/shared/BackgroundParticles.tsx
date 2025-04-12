@@ -23,7 +23,7 @@ const BackgroundParticles = () => {
       // Generate random values for particle
       const x = Math.random() * 100; // Random position from 0 to 100%
       const y = -10; // Start slightly above the viewport
-      const size = Math.random() * 4 + 3; // Random size between 3-7px
+      const size = Math.random() * 3 + 3; // Random size between 3-6px
       const duration = Math.random() * 4 + 8; // Random duration between 8-12s
       
       // Create particle element
