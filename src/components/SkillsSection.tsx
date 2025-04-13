@@ -2,31 +2,31 @@ import { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Monitor, Drill, Database } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import ProgressBar from "./shared/ProgressBar";
 
+// Updated skill objects with logo paths
 const languages = [
-  { name: "JavaScript", percentage: 90 },
-  { name: "Python", percentage: 85 },
-  { name: "C", percentage: 80 },
-  { name: "Java", percentage: 75 },
+  { name: "JavaScript", logo: "/skill-logos/js.svg" },
+  { name: "Python", logo: "/skill-logos/python.svg" },
+  { name: "C", logo: "/skill-logos/c.svg" },
+  { name: "Java", logo: "/skill-logos/java.svg" },
 ];
 
 const frameworks = [
-  { name: "React", percentage: 90 },
-  { name: "Node.js", percentage: 85 },
-  { name: "TensorFlow", percentage: 75 },
-  { name: "Next.js", percentage: 80 },
+  { name: "React", logo: "/skill-logos/react.svg" },
+  { name: "Node.js", logo: "/skill-logos/nodejs.svg" },
+  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
+  { name: "Next.js", logo: "/skill-logos/nextjs.svg" },
 ];
 
 const tools = [
-  { name: "Git", percentage: 90 },
-  { name: "Docker", percentage: 80 },
-  { name: "AWS", percentage: 70 },
+  { name: "Git", logo: "/skill-logos/git.svg" },
+  { name: "Docker", logo: "/skill-logos/docker.svg" },
+  { name: "AWS", logo: "/skill-logos/aws.svg" },
 ];
 
 const databases = [
-  { name: "MongoDB", percentage: 90 },
-  { name: "MySQL", percentage: 80 },
+  { name: "MongoDB", logo: "/skill-logos/mongodb.svg" },
+  { name: "MySQL", logo: "/skill-logos/mysql.svg" },
 ];
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
@@ -88,14 +88,24 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
               <h3 className="text-xl font-semibold">Languages</h3>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {languages.map((language, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="font-medium">{language.name}</span>
+                <motion.div 
+                  key={index}
+                  className="flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
+                    <img 
+                      src={language.logo} 
+                      alt={language.name} 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
-                  <ProgressBar percentage={language.percentage} isVisible={isVisible} delay={index * 0.1} />
-                </div>
+                  <span className="text-sm font-medium text-center">{language.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -112,14 +122,24 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
               <h3 className="text-xl font-semibold">Frameworks</h3>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {frameworks.map((framework, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="font-medium">{framework.name}</span>
+                <motion.div 
+                  key={index}
+                  className="flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                >
+                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
+                    <img 
+                      src={framework.logo} 
+                      alt={framework.name} 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
-                  <ProgressBar percentage={framework.percentage} isVisible={isVisible} delay={index * 0.1 + 0.2} />
-                </div>
+                  <span className="text-sm font-medium text-center">{framework.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -136,14 +156,24 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
               <h3 className="text-xl font-semibold">Tools</h3>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {tools.map((tool, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="font-medium">{tool.name}</span>
+                <motion.div 
+                  key={index}
+                  className="flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                >
+                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
+                    <img 
+                      src={tool.logo} 
+                      alt={tool.name} 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
-                  <ProgressBar percentage={tool.percentage} isVisible={isVisible} delay={index * 0.1 + 0.4} />
-                </div>
+                  <span className="text-sm font-medium text-center">{tool.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -160,14 +190,24 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
               <h3 className="text-xl font-semibold">Databases</h3>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {databases.map((db, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="font-medium">{db.name}</span>
+                <motion.div 
+                  key={index}
+                  className="flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
+                >
+                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
+                    <img 
+                      src={db.logo} 
+                      alt={db.name} 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
-                  <ProgressBar percentage={db.percentage} isVisible={isVisible} delay={index * 0.1 + 0.6} />
-                </div>
+                  <span className="text-sm font-medium text-center">{db.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
