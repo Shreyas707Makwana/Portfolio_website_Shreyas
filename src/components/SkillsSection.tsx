@@ -6,17 +6,21 @@ import SectionTitle from "./shared/SectionTitle";
 
 // Updated skill objects with logo paths
 const languages = [
-  { name: "JavaScript", logo: "/skill-logos/js.svg" },
+  { name: "JavaScript", logo: "/skill-logos/javascript.svg" },
+  { name: "TypeScript", logo: "/skill-logos/typescript.svg" },
   { name: "Python", logo: "/skill-logos/python.svg" },
   { name: "C", logo: "/skill-logos/c.svg" },
+  { name: "C++", logo: "/skill-logos/cpp.svg" },
   { name: "Java", logo: "/skill-logos/java.svg" },
 ];
 
 const frameworks = [
   { name: "React", logo: "/skill-logos/react.svg" },
   { name: "Node.js", logo: "/skill-logos/nodejs.svg" },
-  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
   { name: "Next.js", logo: "/skill-logos/nextjs.svg" },
+  { name: "Express.js", logo: "/skill-logos/express.svg" },
+  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
+  { name: "PyTorch", logo: "/skill-logos/pytorch.svg" },
 ];
 
 const tools = [
@@ -49,21 +53,6 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
     sectionRef.current = node;
   };
   
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-  
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-  
   const fadeInAnimationVariants = {
     initial: {
       opacity: 0,
@@ -78,14 +67,40 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
     }),
   };
 
+  const logoAnimationVariants = {
+    initial: { 
+      scale: 0.8,
+      opacity: 0,
+      rotate: -10
+    },
+    animate: {
+      scale: 1,
+      opacity: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        duration: 0.6
+      }
+    },
+    hover: {
+      scale: 1.1,
+      rotate: 5,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   const renderSkillGrid = (skills: Skill[], title: string) => (
     <div>
-      <h3 className="text-xl font-bold mb-4 text-center">{title}</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+      <h3 className="text-xl font-bold mb-6 text-center">{title}</h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}
-            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-4 flex flex-col items-center justify-center"
+            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 flex flex-col items-center justify-center"
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"
@@ -94,12 +109,20 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
             }}
             custom={index}
           >
-            <img 
-              src={skill.logo} 
-              alt={skill.name} 
-              className="w-10 h-10 mb-2" 
-            />
-            <span className="font-medium">{skill.name}</span>
+            <motion.div
+              variants={logoAnimationVariants}
+              initial="initial"
+              whileInView="animate"
+              whileHover="hover"
+              viewport={{ once: true }}
+            >
+              <img 
+                src={skill.logo} 
+                alt={skill.name} 
+                className="w-16 h-16 mb-3" 
+              />
+            </motion.div>
+            <span className="font-medium text-lg">{skill.name}</span>
           </motion.div>
         ))}
       </div>
@@ -119,7 +142,7 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
         </motion.h2>
         
         <motion.div 
-          className="mt-12 space-y-12"
+          className="mt-12 space-y-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}

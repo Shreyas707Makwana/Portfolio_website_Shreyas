@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
+import type { RefObject } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
@@ -15,7 +16,7 @@ function App() {
   const skillsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
 
-  const scrollToSection = (ref: React.RefObject<HTMLElement>) => {
+  const scrollToSection = (ref: RefObject<HTMLElement>) => {
     if (ref && ref.current) {
       window.scrollTo({
         top: ref.current.offsetTop - 80,
@@ -43,8 +44,8 @@ function App() {
           onContactClick={() => scrollToSection(contactRef)}
         />
         <AboutSection ref={aboutRef} />
-        <ProjectsSection ref={projectsRef} />
         <SkillsSection ref={skillsRef} />
+        <ProjectsSection ref={projectsRef} />
         <ContactSection ref={contactRef} />
       </main>
       
