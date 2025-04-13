@@ -1,7 +1,8 @@
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Code, Monitor, Drill, Database } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import SectionTitle from "./shared/SectionTitle";
 
 // Updated skill objects with logo paths
 const languages = [
@@ -28,6 +29,11 @@ const databases = [
   { name: "MongoDB", logo: "/skill-logos/mongodb.svg" },
   { name: "MySQL", logo: "/skill-logos/mysql.svg" },
 ];
+
+type Skill = {
+  name: string;
+  logo: string;
+};
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
   const { elementRef: sectionRef, isVisible } = useIntersectionObserver({
@@ -58,6 +64,48 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
   
+  const fadeInAnimationVariants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.05 * index,
+      },
+    }),
+  };
+
+  const renderSkillGrid = (skills: Skill[], title: string) => (
+    <div>
+      <h3 className="text-xl font-bold mb-4 text-center">{title}</h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={skill.name}
+            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-4 flex flex-col items-center justify-center"
+            variants={fadeInAnimationVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{
+              once: true,
+            }}
+            custom={index}
+          >
+            <img 
+              src={skill.logo} 
+              alt={skill.name} 
+              className="w-10 h-10 mb-2" 
+            />
+            <span className="font-medium">{skill.name}</span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <section id="skills" ref={mergedRef} className="section py-20 relative">
       <div className="container mx-auto px-4">
@@ -71,146 +119,16 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
         </motion.h2>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
-          variants={container}
-          initial="hidden"
-          animate={isVisible ? "show" : "hidden"}
+          className="mt-12 space-y-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
-          {/* Languages */}
-          <motion.div 
-            variants={item}
-            className="bg-white p-6 rounded-xl shadow-lg border border-primary/10"
-          >
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-primary/5 rounded-full flex items-center justify-center">
-                <Code className="h-5 w-5 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">Languages</h3>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {languages.map((language, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex flex-col items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
-                    <img 
-                      src={language.logo} 
-                      alt={language.name} 
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-center">{language.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Frameworks */}
-          <motion.div 
-            variants={item}
-            className="bg-white p-6 rounded-xl shadow-lg border border-primary/10"
-          >
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-primary/5 rounded-full flex items-center justify-center">
-                <Monitor className="h-5 w-5 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">Frameworks</h3>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {frameworks.map((framework, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex flex-col items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                >
-                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
-                    <img 
-                      src={framework.logo} 
-                      alt={framework.name} 
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-center">{framework.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Tools */}
-          <motion.div 
-            variants={item}
-            className="bg-white p-6 rounded-xl shadow-lg border border-primary/10"
-          >
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-primary/5 rounded-full flex items-center justify-center">
-                <Drill className="h-5 w-5 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">Tools</h3>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {tools.map((tool, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex flex-col items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                >
-                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
-                    <img 
-                      src={tool.logo} 
-                      alt={tool.name} 
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-center">{tool.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Databases */}
-          <motion.div 
-            variants={item}
-            className="bg-white p-6 rounded-xl shadow-lg border border-primary/10"
-          >
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-primary/5 rounded-full flex items-center justify-center">
-                <Database className="h-5 w-5 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">Databases</h3>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {databases.map((db, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex flex-col items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
-                >
-                  <div className="w-16 h-16 mb-2 p-2 bg-white rounded-lg shadow-md flex items-center justify-center">
-                    <img 
-                      src={db.logo} 
-                      alt={db.name} 
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-center">{db.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          {renderSkillGrid(languages, "Languages")}
+          {renderSkillGrid(frameworks, "Frameworks")}
+          {renderSkillGrid(tools, "Tools")}
+          {renderSkillGrid(databases, "Databases")}
         </motion.div>
       </div>
     </section>
