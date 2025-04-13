@@ -16,7 +16,12 @@ const Header = ({ onNavigate }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
   
-  const skills = ["AI/ML", "Design", "Development", "Coding"];
+  const phrases = [
+    "Innovative Engineer", 
+    "Passionate Programmer", 
+    "Creative Developer",
+    "AI/ML Enthusiast"
+  ];
   
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +34,8 @@ const Header = ({ onNavigate }: HeaderProps) => {
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setRotatingTextIndex((prev) => (prev + 1) % skills.length);
-    }, 2000); // Changed from 3000ms to 2000ms (2 seconds)
+      setRotatingTextIndex((prev) => (prev + 1) % phrases.length);
+    }, 2500); // Slightly longer for sentences
     
     return () => clearInterval(interval);
   }, []);
@@ -63,9 +68,9 @@ const Header = ({ onNavigate }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="text-accent ml-1 text-3xl"
+            className="text-accent ml-1 text-2xl whitespace-nowrap"
           >
-            {skills[rotatingTextIndex]}
+            {phrases[rotatingTextIndex]}
           </motion.span>
         </motion.a>
         
