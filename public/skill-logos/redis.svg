@@ -1,0 +1,22 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redisGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D82C20;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A41E22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Redis logo shape -->
+  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="url(#redisGradient)"/>
+  
+  <!-- Redis database cylinders -->
+  <ellipse cx="12" cy="8" rx="6" ry="1.5" fill="white" opacity="0.9"/>
+  <ellipse cx="12" cy="12" rx="6" ry="1.5" fill="white" opacity="0.7"/>
+  <ellipse cx="12" cy="16" rx="6" ry="1.5" fill="white" opacity="0.5"/>
+  
+  <!-- Connecting lines -->
+  <rect x="6" y="8" width="12" height="8" fill="white" opacity="0.3"/>
+  
+  <!-- Redis "R" symbol -->
+  <text x="12" y="13" text-anchor="middle" fill="#D82C20" font-size="8" font-weight="bold" font-family="Arial">R</text>
+</svg>

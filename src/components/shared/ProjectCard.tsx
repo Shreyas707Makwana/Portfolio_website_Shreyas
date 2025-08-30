@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 
@@ -63,7 +63,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   return (
     <motion.div
       ref={cardRef}
-      className="bg-white rounded-xl overflow-hidden shadow-lg border border-primary/10 transition-all duration-300"
+      className="bg-white rounded-xl overflow-hidden shadow-lg border border-primary/10 transition-all duration-300 relative pb-16"
       variants={item}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -101,6 +101,10 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {project.longDescription}
         </p>
         
+      </div>
+
+      {/* View Code button - pinned to card bottom-left */}
+      <div className="absolute bottom-4 left-4">
         <a
           href={project.codeLink}
           target="_blank"
@@ -108,9 +112,26 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           className="inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
         >
           <Github className="h-4 w-4 mr-2" />
-          View Project
+          View Code
         </a>
       </div>
+
+      {/* Live Demo button - pinned to card bottom-right when available */}
+      {project.demoLink && (
+        <div className="absolute bottom-4 right-4">
+          <a
+            href={project.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors text-sm font-medium"
+          >
+            <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            Live Demo
+          </a>
+        </div>
+      )}
     </motion.div>
   );
 };

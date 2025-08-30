@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Code, Palette, Brain } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import SkillCard from "./shared/SkillCard";
 import profileImage from "../assets/profile-image.jpg";
 
 const AboutSection = forwardRef<HTMLElement>((props, ref) => {
@@ -19,16 +18,6 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
     sectionRef.current = node;
   };
   
-  const coursework = [
-    "Data Structures",
-    "OOPs",
-    "Algorithm Analysis",
-    "Operating Systems",
-    "Computer Networks",
-    "Software Engineering",
-    "Artificial Intelligence",
-    "Database Management"
-  ];
   
   const container = {
     hidden: { opacity: 0 },
@@ -79,7 +68,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <p className="text-lg leading-relaxed">
-                I'm a passionate developer with expertise in creating beautiful and functional digital experiences. My approach combines technical excellence with thoughtful design to deliver solutions that delight users. I'm eager to leverage my academic foundation, hands-on projects, and enthusiasm for innovative tech stacks to contribute effectively in internship roles and grow within dynamic teams.
+                Computer Science engineering student with expertise in AI/ML and full-stack development. I've constructed production-ready RAG systems delivering 92% citation precision and scalable applications handling 50+ concurrent users. Developed neural text-to-speech systems with 4.2/5 MOS scores and document analysis models with 82.6% mAP performance. Proficient in various DevOps tools and software testing services with strong foundation in modern web technologies.
               </p>
             </motion.div>
             
@@ -92,33 +81,9 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
                 <BookOpen className="h-6 w-6 text-accent" />
                 <h3 className="text-xl font-semibold">Education</h3>
               </div>
-              <p className="ml-9">B. Tech in Computer Science @ IIITV-ICD 2026</p>
+              <p className="ml-9">B. Tech in Computer Science @ IIIT Vadodara 2026</p>
             </motion.div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <Code className="h-6 w-6 text-accent" />
-                <h3 className="text-xl font-semibold">Relevant Coursework</h3>
-              </div>
-              <div className="ml-9 grid grid-cols-2 gap-x-4 gap-y-2 mt-2">
-                {coursework.map((course, index) => (
-                  <motion.div 
-                    key={index}
-                    className="flex items-center"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
-                  >
-                    <div className="w-2 h-2 bg-accent rounded-full mr-2"></div>
-                    <span>{course}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

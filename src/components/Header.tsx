@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
   onNavigate: {
     about: () => void;
+    workExperience: () => void;
     projects: () => void;
     skills: () => void;
+    achievements: () => void;
     contact: () => void;
   };
 }
@@ -78,8 +80,10 @@ const Header = ({ onNavigate }: HeaderProps) => {
         <nav className="hidden md:flex space-x-8">
           {[
             { label: "About", onClick: onNavigate.about },
+            { label: "Experience", onClick: onNavigate.workExperience },
             { label: "Projects", onClick: onNavigate.projects },
             { label: "Skills", onClick: onNavigate.skills },
+            { label: "Achievements", onClick: onNavigate.achievements },
             { label: "Contact", onClick: onNavigate.contact },
           ].map((item, index) => (
             <motion.button
@@ -126,11 +130,17 @@ const Header = ({ onNavigate }: HeaderProps) => {
               <button onClick={() => handleNavClick(onNavigate.about)} className="text-lg text-primary hover:text-accent transition-colors text-left">
                 About
               </button>
+              <button onClick={() => handleNavClick(onNavigate.workExperience)} className="text-lg text-primary hover:text-accent transition-colors text-left">
+                Experience
+              </button>
               <button onClick={() => handleNavClick(onNavigate.projects)} className="text-lg text-primary hover:text-accent transition-colors text-left">
                 Projects
               </button>
               <button onClick={() => handleNavClick(onNavigate.skills)} className="text-lg text-primary hover:text-accent transition-colors text-left">
                 Skills
+              </button>
+              <button onClick={() => handleNavClick(onNavigate.achievements)} className="text-lg text-primary hover:text-accent transition-colors text-left">
+                Achievements
               </button>
               <button onClick={() => handleNavClick(onNavigate.contact)} className="text-lg text-primary hover:text-accent transition-colors text-left">
                 Contact

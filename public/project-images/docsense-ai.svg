@@ -1,0 +1,51 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="docGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#docGradient)" opacity="0.1"/>
+  
+  <!-- Document stack -->
+  <rect x="60" y="50" width="60" height="80" rx="4" fill="url(#docGradient)" opacity="0.8"/>
+  <rect x="65" y="45" width="60" height="80" rx="4" fill="url(#docGradient)" opacity="0.9"/>
+  <rect x="70" y="40" width="60" height="80" rx="4" fill="url(#docGradient)"/>
+  
+  <!-- Document lines -->
+  <line x1="80" y1="55" x2="120" y2="55" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="80" y1="65" x2="115" y2="65" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="80" y1="75" x2="110" y2="75" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="80" y1="85" x2="118" y2="85" stroke="white" stroke-width="2" opacity="0.7"/>
+  
+  <!-- AI Brain/Neural network -->
+  <circle cx="140" cy="140" r="25" fill="url(#aiGradient)" opacity="0.9"/>
+  
+  <!-- Neural connections -->
+  <circle cx="130" cy="130" r="3" fill="url(#aiGradient)"/>
+  <circle cx="150" cy="130" r="3" fill="url(#aiGradient)"/>
+  <circle cx="125" cy="150" r="3" fill="url(#aiGradient)"/>
+  <circle cx="155" cy="150" r="3" fill="url(#aiGradient)"/>
+  <circle cx="140" cy="160" r="3" fill="url(#aiGradient)"/>
+  
+  <!-- Connection lines -->
+  <line x1="130" y1="130" x2="140" y2="140" stroke="url(#aiGradient)" stroke-width="2" opacity="0.6"/>
+  <line x1="150" y1="130" x2="140" y2="140" stroke="url(#aiGradient)" stroke-width="2" opacity="0.6"/>
+  <line x1="125" y1="150" x2="140" y2="140" stroke="url(#aiGradient)" stroke-width="2" opacity="0.6"/>
+  <line x1="155" y1="150" x2="140" y2="140" stroke="url(#aiGradient)" stroke-width="2" opacity="0.6"/>
+  <line x1="140" y1="160" x2="140" y2="140" stroke="url(#aiGradient)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Chat bubble -->
+  <path d="M 40 140 Q 40 130 50 130 L 80 130 Q 90 130 90 140 L 90 160 Q 90 170 80 170 L 60 170 L 50 180 L 50 170 Q 40 170 40 160 Z" fill="url(#aiGradient)" opacity="0.8"/>
+  
+  <!-- Chat dots -->
+  <circle cx="55" cy="150" r="2" fill="white"/>
+  <circle cx="65" cy="150" r="2" fill="white"/>
+  <circle cx="75" cy="150" r="2" fill="white"/>
+</svg>

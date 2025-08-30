@@ -1,0 +1,65 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gaussianGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9a9e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fecfef;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="splattingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="sphereGradient" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff9a9e;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#gaussianGradient)" opacity="0.1"/>
+  
+  <!-- Central 3D sphere -->
+  <circle cx="100" cy="100" r="35" fill="url(#sphereGradient)" opacity="0.9"/>
+  
+  <!-- Gaussian points around the sphere -->
+  <circle cx="70" cy="70" r="4" fill="url(#gaussianGradient)" opacity="0.8">
+    <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="130" cy="70" r="3" fill="url(#splattingGradient)" opacity="0.8">
+    <animate attributeName="r" values="2;4;2" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="70" cy="130" r="5" fill="url(#gaussianGradient)" opacity="0.7">
+    <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="130" cy="130" r="3" fill="url(#splattingGradient)" opacity="0.8">
+    <animate attributeName="r" values="2;5;2" dur="1.9s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Omnidirectional rays -->
+  <g opacity="0.6">
+    <line x1="100" y1="100" x2="50" y2="50" stroke="url(#gaussianGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="150" y2="50" stroke="url(#splattingGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="50" y2="150" stroke="url(#gaussianGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="150" y2="150" stroke="url(#splattingGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="100" y2="40" stroke="url(#gaussianGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="100" y2="160" stroke="url(#splattingGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="40" y2="100" stroke="url(#gaussianGradient)" stroke-width="2"/>
+    <line x1="100" y1="100" x2="160" y2="100" stroke="url(#splattingGradient)" stroke-width="2"/>
+  </g>
+  
+  <!-- Directional arrows -->
+  <polygon points="45,45 55,50 50,55" fill="url(#gaussianGradient)" opacity="0.8"/>
+  <polygon points="155,45 145,50 150,55" fill="url(#splattingGradient)" opacity="0.8"/>
+  <polygon points="45,155 55,150 50,145" fill="url(#gaussianGradient)" opacity="0.8"/>
+  <polygon points="155,155 145,150 150,145" fill="url(#splattingGradient)" opacity="0.8"/>
+  
+  <!-- 360-degree indicator -->
+  <circle cx="100" cy="100" r="60" stroke="url(#gaussianGradient)" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5">
+    <animateTransform attributeName="transform" type="rotate" values="0 100 100;360 100 100" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- SSIM quality indicators -->
+  <rect x="20" y="20" width="8" height="8" fill="url(#gaussianGradient)" opacity="0.8"/>
+  <rect x="172" y="20" width="8" height="8" fill="url(#splattingGradient)" opacity="0.8"/>
+  <rect x="20" y="172" width="8" height="8" fill="url(#gaussianGradient)" opacity="0.8"/>
+  <rect x="172" y="172" width="8" height="8" fill="url(#splattingGradient)" opacity="0.8"/>
+</svg>

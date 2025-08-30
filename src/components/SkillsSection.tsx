@@ -1,37 +1,45 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { Code, Monitor, Drill, Database } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import SectionTitle from "./shared/SectionTitle";
 
-// Updated skill objects with logo paths
-const languages = [
+// Programming Languages
+const programmingLanguages = [
+  { name: "Python", logo: "/skill-logos/python.svg" },
   { name: "JavaScript", logo: "/skill-logos/javascript.svg" },
   { name: "TypeScript", logo: "/skill-logos/typescript.svg" },
-  { name: "Python", logo: "/skill-logos/python.svg" },
-  { name: "C", logo: "/skill-logos/c.svg" },
   { name: "C++", logo: "/skill-logos/cpp.svg" },
   { name: "Java", logo: "/skill-logos/java.svg" },
+  { name: "SQL", logo: "/skill-logos/mysql.svg" },
 ];
 
-const frameworks = [
-  { name: "React", logo: "/skill-logos/react.svg" },
-  { name: "Node.js", logo: "/skill-logos/nodejs.svg" },
-  { name: "Next.js", logo: "/skill-logos/nextjs.svg" },
-  { name: "Express.js", logo: "/skill-logos/express.svg" },
-  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
+// Machine Learning & AI
+const mlAndAI = [
   { name: "PyTorch", logo: "/skill-logos/pytorch.svg" },
+  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
+  { name: "Scikit-learn", logo: "/skill-logos/python.svg" },
+  { name: "Transformers", logo: "/skill-logos/pytorch.svg" },
+  { name: "LangChain", logo: "/skill-logos/python.svg" },
+  { name: "OpenCV", logo: "/skill-logos/python.svg" },
 ];
 
-const tools = [
-  { name: "Git", logo: "/skill-logos/git.svg" },
-  { name: "Docker", logo: "/skill-logos/docker.svg" },
-  { name: "AWS", logo: "/skill-logos/aws.svg" },
+// Web Technologies
+const webTechnologies = [
+  { name: "React.js", logo: "/skill-logos/react.svg" },
+  { name: "Next.js", logo: "/skill-logos/nextjs.svg" },
+  { name: "Django", logo: "/skill-logos/python.svg" },
+  { name: "FastAPI", logo: "/skill-logos/python.svg" },
+  { name: "Node.js", logo: "/skill-logos/nodejs.svg" },
+  { name: "Streamlit", logo: "/skill-logos/python.svg" },
 ];
 
-const databases = [
+// Databases & DevOps
+const databasesAndDevOps = [
+  { name: "PostgreSQL", logo: "/skill-logos/mysql.svg" },
+  { name: "Redis", logo: "/skill-logos/redis.svg" },
   { name: "MongoDB", logo: "/skill-logos/mongodb.svg" },
-  { name: "MySQL", logo: "/skill-logos/mysql.svg" },
+  { name: "Docker", logo: "/skill-logos/docker.svg" },
+  { name: "Git", logo: "/skill-logos/git.svg" },
+  { name: "AWS", logo: "/skill-logos/aws.svg" },
 ];
 
 type Skill = {
@@ -148,10 +156,10 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          {renderSkillGrid(languages, "Languages")}
-          {renderSkillGrid(frameworks, "Frameworks")}
-          {renderSkillGrid(tools, "Tools")}
-          {renderSkillGrid(databases, "Databases")}
+          {renderSkillGrid(programmingLanguages, "Programming Languages")}
+          {renderSkillGrid(mlAndAI, "Machine Learning & AI")}
+          {renderSkillGrid(webTechnologies, "Web Technologies")}
+          {renderSkillGrid(databasesAndDevOps, "Databases & DevOps")}
         </motion.div>
       </div>
     </section>
