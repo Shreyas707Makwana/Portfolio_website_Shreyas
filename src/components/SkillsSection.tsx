@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
+import { Settings, Cpu, Layers, Zap } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import { 
   FaReact, 
@@ -198,14 +199,52 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section id="skills" ref={mergedRef} className="section py-20 relative">
       <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+        {/* Enhanced Skills Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
         >
-          My Stack
-        </motion.h2>
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4"
+            animate={{
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <Settings className="h-8 w-8 text-green-500" />
+            <Cpu className="h-6 w-6 text-blue-500 animate-spin" style={{ animationDuration: '3s' }} />
+            <Layers className="h-8 w-8 text-orange-500" />
+          </motion.div>
+          
+          <motion.h2 
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-500 via-blue-500 to-orange-500 bg-clip-text text-transparent mb-4"
+            animate={{
+              backgroundPosition: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            My Tech Stack
+          </motion.h2>
+          
+          <motion.p
+            className="text-lg text-primary/70 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Technologies and tools I use to bring ideas to life
+          </motion.p>
+        </motion.div>
         
         <motion.div 
           className="mt-12 space-y-12"

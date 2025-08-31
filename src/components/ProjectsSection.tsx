@@ -1,5 +1,6 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Sparkles, Rocket, Code2, Eye, Filter } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import ProjectCard from "./shared/ProjectCard";
 
@@ -12,6 +13,9 @@ const projects = [
     tags: ["PyTorch", "CUDA", "Streamlit"],
     codeLink: "https://github.com/Shreyas707Makwana/Speech_Synthesis",
     demoLink: "",
+    category: "AI/ML",
+    color: "from-purple-500 to-pink-500",
+    accentColor: "purple"
   },
   {
     title: "DocSense AI",
@@ -21,6 +25,9 @@ const projects = [
     tags: ["Next.js", "FastAPI", "PostgreSQL", "Vector DB"],
     codeLink: "https://github.com/Shreyas707Makwana/DocSense_AI",
     demoLink: "https://ai-powered-personal-agent-platform.vercel.app",
+    category: "Full-Stack",
+    color: "from-blue-500 to-cyan-500",
+    accentColor: "blue"
   },
   {
     title: "Sync Pad",
@@ -30,6 +37,9 @@ const projects = [
     tags: ["Django", "WebSockets", "Yjs", "React"],
     codeLink: "https://github.com/Shreyas707Makwana/Sync_Pad",
     demoLink: "",
+    category: "Full-Stack",
+    color: "from-green-500 to-emerald-500",
+    accentColor: "green"
   },
   {
     title: "Spy Camera",
@@ -39,6 +49,9 @@ const projects = [
     tags: ["HTML", "Python", "CSS"],
     codeLink: "https://github.com/Shreyas707Makwana/Spy_Camera",
     demoLink: "",
+    category: "Computer Vision",
+    color: "from-red-500 to-orange-500",
+    accentColor: "red"
   },
   {
     title: "Omnidirectional Gaussian Splatting",
@@ -48,6 +61,9 @@ const projects = [
     tags: ["Python", "PyTorch", "Computer Vision", "3D Graphics"],
     codeLink: "https://github.com/Shreyas707Makwana/OmniDirectional_Gaussian_Splatting",
     demoLink: "",
+    category: "Computer Vision",
+    color: "from-indigo-500 to-purple-500",
+    accentColor: "indigo"
   },
   {
     title: "Auto Entry",
@@ -57,10 +73,14 @@ const projects = [
     tags: ["Node.js", "MongoDB", "HTML", "CSS"],
     codeLink: "https://github.com/Shreyas707Makwana/Auto_Entry",
     demoLink: "",
+    category: "Web App",
+    color: "from-yellow-500 to-amber-500",
+    accentColor: "yellow"
   },
 ];
 
 const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const { elementRef: sectionRef, isVisible } = useIntersectionObserver({
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px",
@@ -73,43 +93,175 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
     // @ts-ignore
     sectionRef.current = node;
   };
+
+  const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
+  const filteredProjects = selectedCategory === "All" 
+    ? projects 
+    : projects.filter(p => p.category === selectedCategory);
   
   const container = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
+
+  const floatingElements = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 2,
+    duration: 3 + Math.random() * 2,
+  }));
   
   return (
-    <section id="projects" ref={mergedRef} className="section py-20 relative">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+    <section id="projects" ref={mergedRef} className="section py-20 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {floatingElements.map((element) => (
+          <motion.div
+            key={element.id}
+            className="absolute w-2 h-2 bg-gradient-to-r from-accent/30 to-primary/30 rounded-full"
+            style={{
+              left: `${element.x}%`,
+              top: `${element.y}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: element.duration,
+              delay: element.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+        
+        {/* Large decorative circles */}
+        <motion.div
+          className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl"
+          animate={{
+            rotate: 360,
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-20 -left-20 w-32 h-32 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-full blur-xl"
+          animate={{
+            rotate: -360,
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Enhanced Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4"
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <Rocket className="h-8 w-8 text-accent" />
+            <Sparkles className="h-6 w-6 text-primary animate-pulse" />
+            <Code2 className="h-8 w-8 text-accent" />
+          </motion.div>
+          
+          <motion.h2 
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4"
+            animate={{
+              backgroundPosition: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            Project Showcase
+          </motion.h2>
+          
+          <motion.p
+            className="text-lg text-primary/70 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Explore my journey through innovative solutions, cutting-edge technologies, and impactful creations
+          </motion.p>
+        </motion.div>
+
+        {/* Category Filter */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Project Gallery
-        </motion.h2>
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-gradient-to-r from-accent to-primary text-white shadow-lg shadow-accent/25"
+                  : "bg-white/80 backdrop-blur-sm text-primary/70 hover:bg-white hover:text-primary border border-primary/10"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="flex items-center gap-2">
+                <Filter className="h-4 w-4" />
+                {category}
+              </span>
+            </motion.button>
+          ))}
+        </motion.div>
         
+        {/* Projects Grid */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           variants={container}
           initial="hidden"
           animate={isVisible ? "show" : "hidden"}
+          key={selectedCategory}
         >
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <ProjectCard 
-              key={index}
+              key={`${selectedCategory}-${index}`}
               project={project}
               index={index} 
             />
           ))}
         </motion.div>
+
       </div>
     </section>
   );

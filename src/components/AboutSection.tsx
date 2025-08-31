@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Code2, Zap, Trophy, Target, Rocket, Brain, Heart } from "lucide-react";
+import { BookOpen, Code2, Zap, Trophy, Target, Rocket, Brain, Heart, User, Sparkles } from "lucide-react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import profileImage from "../assets/profile-image.jpg";
 
@@ -64,14 +64,52 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section id="about" ref={mergedRef} className="section py-20 relative">
       <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+        {/* Enhanced About Me Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
         >
-          About Me
-        </motion.h2>
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4"
+            animate={{
+              rotate: [0, 5, -5, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <User className="h-8 w-8 text-blue-500" />
+            <Heart className="h-6 w-6 text-red-500 animate-pulse" />
+            <Brain className="h-8 w-8 text-purple-500" />
+          </motion.div>
+          
+          <motion.h2 
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-red-500 bg-clip-text text-transparent mb-4"
+            animate={{
+              backgroundPosition: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            About Me
+          </motion.h2>
+          
+          <motion.p
+            className="text-lg text-primary/70 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Discover the passion, creativity, and innovation behind the code
+          </motion.p>
+        </motion.div>
         
         {/* Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
