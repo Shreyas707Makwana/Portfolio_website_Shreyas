@@ -79,7 +79,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: 'preserve-3d' }}
       whileHover={{
-        boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
       }}
     >
       {/* Animated border gradient */}
@@ -232,7 +232,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       {/* Hover glow effect */}
       <motion.div
-        className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}
+        className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-3 transition-opacity duration-500 pointer-events-none`}
       />
     </motion.div>
   );
