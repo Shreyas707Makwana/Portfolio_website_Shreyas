@@ -160,13 +160,13 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
             <h3 className="text-xl font-extrabold text-center tracking-wide uppercase">{title}</h3>
           </div>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
           {skills.map((skill, index) => {
             const SkillIcon = skill.icon;
             return (
               <motion.div
               key={skill.name}
-              className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 flex flex-col items-center justify-center hover:bg-opacity-20 transition-all duration-300"
+              className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-4 flex flex-col items-center justify-center hover:bg-opacity-20 transition-all duration-300 w-28 h-28 md:w-32 md:h-32"
               variants={fadeInAnimationVariants}
               initial="initial"
               whileInView="animate"
@@ -184,9 +184,9 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
                 className="mb-3"
                 style={{ color: skill.color }}
               >
-                <SkillIcon size={64} />
+                <SkillIcon size={56} />
               </motion.div>
-                <span className="font-medium text-lg text-center">{skill.name}</span>
+                <span className="font-medium text-xs text-center mt-1">{skill.name}</span>
               </motion.div>
             );
           })}
@@ -208,7 +208,7 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
         </motion.h2>
         
         <motion.div 
-          className="mt-12 space-y-16"
+          className="mt-12 space-y-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
