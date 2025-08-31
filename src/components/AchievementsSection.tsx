@@ -89,7 +89,7 @@ const AchievementsSection = forwardRef<HTMLElement>((props, ref) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           {achievements.map((achievement, index) => (
             <motion.div
@@ -98,7 +98,7 @@ const AchievementsSection = forwardRef<HTMLElement>((props, ref) => {
               initial="initial"
               whileInView="animate"
               viewport={{
-                once: true,
+                once: false,
               }}
               custom={index}
             >

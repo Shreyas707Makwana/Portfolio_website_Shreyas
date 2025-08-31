@@ -1,50 +1,93 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaPython, 
+  FaJava, 
+  FaDocker, 
+  FaGitAlt, 
+  FaAws,
+  FaHtml5,
+  FaCss3Alt
+} from "react-icons/fa";
+import { 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiJavascript, 
+  SiTailwindcss,
+  SiDjango,
+  SiFastapi,
+  SiCplusplus,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiMysql,
+  SiPytorch,
+  SiTensorflow,
+  SiScikitlearn,
+  SiOpencv,
+  SiStreamlit,
+  SiLinux,
+  SiExpress,
+  SiHuggingface,
+  SiLangchain
+} from "react-icons/si";
+import { TbBrandCpp } from "react-icons/tb";
 
-// Programming Languages
-const programmingLanguages = [
-  { name: "Python", logo: "/skill-logos/python.svg" },
-  { name: "JavaScript", logo: "/skill-logos/javascript.svg" },
-  { name: "TypeScript", logo: "/skill-logos/typescript.svg" },
-  { name: "C++", logo: "/skill-logos/cpp.svg" },
-  { name: "Java", logo: "/skill-logos/java.svg" },
-  { name: "SQL", logo: "/skill-logos/mysql.svg" },
+// Frontend
+const frontend = [
+  { name: "React.js", icon: FaReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "HTML/CSS", icon: FaHtml5, color: "#E34F26" },
+];
+
+// Backend
+const backend = [
+  { name: "Python", icon: FaPython, color: "#3776AB" },
+  { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+  { name: "Express", icon: SiExpress, color: "#000000" },
+  { name: "Django", icon: SiDjango, color: "#092E20" },
+  { name: "FastAPI", icon: SiFastapi, color: "#009688" },
+  { name: "Java", icon: FaJava, color: "#ED8B00" },
+  { name: "C++", icon: SiCplusplus, color: "#00599C" },
+];
+
+// Database
+const database = [
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Redis", icon: SiRedis, color: "#DC382D" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
 ];
 
 // Machine Learning & AI
 const mlAndAI = [
-  { name: "PyTorch", logo: "/skill-logos/pytorch.svg" },
-  { name: "TensorFlow", logo: "/skill-logos/tensorflow.svg" },
-  { name: "Scikit-learn", logo: "/skill-logos/python.svg" },
-  { name: "Transformers", logo: "/skill-logos/pytorch.svg" },
-  { name: "LangChain", logo: "/skill-logos/python.svg" },
-  { name: "OpenCV", logo: "/skill-logos/python.svg" },
+  { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
+  { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+  { name: "Scikit-learn", icon: SiScikitlearn, color: "#F7931E" },
+  { name: "Transformers", icon: SiHuggingface, color: "#FFD21E" },
+  { name: "LangChain", icon: SiLangchain, color: "#1C3C3C" },
+  { name: "OpenCV", icon: SiOpencv, color: "#5C3EE8" },
 ];
 
-// Web Technologies
-const webTechnologies = [
-  { name: "React.js", logo: "/skill-logos/react.svg" },
-  { name: "Next.js", logo: "/skill-logos/nextjs.svg" },
-  { name: "Django", logo: "/skill-logos/python.svg" },
-  { name: "FastAPI", logo: "/skill-logos/python.svg" },
-  { name: "Node.js", logo: "/skill-logos/nodejs.svg" },
-  { name: "Streamlit", logo: "/skill-logos/python.svg" },
-];
-
-// Databases & DevOps
-const databasesAndDevOps = [
-  { name: "PostgreSQL", logo: "/skill-logos/mysql.svg" },
-  { name: "Redis", logo: "/skill-logos/redis.svg" },
-  { name: "MongoDB", logo: "/skill-logos/mongodb.svg" },
-  { name: "Docker", logo: "/skill-logos/docker.svg" },
-  { name: "Git", logo: "/skill-logos/git.svg" },
-  { name: "AWS", logo: "/skill-logos/aws.svg" },
+// DevOps/Tools
+const devopsTools = [
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "Git", icon: FaGitAlt, color: "#F05032" },
+  { name: "AWS", icon: FaAws, color: "#FF9900" },
+  { name: "Streamlit", icon: SiStreamlit, color: "#FF4B4B" },
+  { name: "Linux", icon: SiLinux, color: "#FCC624" },
 ];
 
 type Skill = {
   name: string;
-  logo: string;
+  icon: React.ComponentType<any>;
+  color: string;
 };
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
@@ -101,41 +144,56 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
     }
   };
 
-  const renderSkillGrid = (skills: Skill[], title: string) => (
-    <div>
-      <h3 className="text-xl font-bold mb-6 text-center">{title}</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 flex flex-col items-center justify-center"
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{
-              once: true,
-            }}
-            custom={index}
-          >
-            <motion.div
-              variants={logoAnimationVariants}
+  const renderSkillGrid = (skills: Skill[], title: string) => {
+    const IconComponent = skills[0]?.icon;
+    
+    return (
+      <div>
+        <motion.div 
+          className="flex items-center justify-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="bg-accent/10 border border-accent/20 text-accent px-8 py-4 rounded-lg shadow-sm">
+            <h3 className="text-xl font-extrabold text-center tracking-wide uppercase">{title}</h3>
+          </div>
+        </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          {skills.map((skill, index) => {
+            const SkillIcon = skill.icon;
+            return (
+              <motion.div
+              key={skill.name}
+              className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-5 flex flex-col items-center justify-center hover:bg-opacity-20 transition-all duration-300"
+              variants={fadeInAnimationVariants}
               initial="initial"
               whileInView="animate"
-              whileHover="hover"
-              viewport={{ once: true }}
+              viewport={{
+                once: false,
+              }}
+              custom={index}
             >
-              <img 
-                src={skill.logo} 
-                alt={skill.name} 
-                className="w-16 h-16 mb-3" 
-              />
-            </motion.div>
-            <span className="font-medium text-lg">{skill.name}</span>
-          </motion.div>
-        ))}
+              <motion.div
+                variants={logoAnimationVariants}
+                initial="initial"
+                whileInView="animate"
+                whileHover="hover"
+                viewport={{ once: false }}
+                className="mb-3"
+                style={{ color: skill.color }}
+              >
+                <SkillIcon size={64} />
+              </motion.div>
+                <span className="font-medium text-lg text-center">{skill.name}</span>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="skills" ref={mergedRef} className="section py-20 relative">
@@ -154,12 +212,13 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
-          {renderSkillGrid(programmingLanguages, "Programming Languages")}
+          {renderSkillGrid(frontend, "Frontend")}
+          {renderSkillGrid(backend, "Backend")}
+          {renderSkillGrid(database, "Database")}
           {renderSkillGrid(mlAndAI, "Machine Learning & AI")}
-          {renderSkillGrid(webTechnologies, "Web Technologies")}
-          {renderSkillGrid(databasesAndDevOps, "Databases & DevOps")}
+          {renderSkillGrid(devopsTools, "DevOps/Tools")}
         </motion.div>
       </div>
     </section>

@@ -49,7 +49,8 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="aspect-[2/1] overflow-hidden rounded-xl shadow-xl bg-primary/5 flex items-center justify-center">
@@ -64,7 +65,8 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           <div className="space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <p className="text-lg leading-relaxed">
@@ -74,7 +76,8 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="flex items-center space-x-3 mb-2">
