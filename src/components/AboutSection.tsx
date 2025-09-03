@@ -22,7 +22,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const highlights = [
     {
       icon: <Brain className="h-6 w-6" />,
-      title: "AI Enthusiast",
+      title: "AI Developer",
       description: "Fascinated by the magic of neural networks and machine learning. I love turning data into intelligent insights and building systems that can think.",
       color: "text-purple-500"
     },
